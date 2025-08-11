@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>P-HUB - Пицца и хот-доги с доставкой</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <i class="fas fa-pizza-slice"></i>
+          <span>P-HUB</span>
+        </a>
+        <div class="nav-links">
+          <a href="#pizzas">Пиццы</a>
+          <a href="#hotdogs">Хот-доги</a>
+          <a href="#how-it-works">Как заказать</a>
+          <a href="#testimonials">Отзывы</a>
+        </div>
+        <div class="nav-buttons" id="nav-buttons">
+          <button id="btn-login-header" class="btn btn-secondary">Войти</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="close-mobile-nav" id="close-mobile-nav" aria-label="Закрыть меню">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-nav-links">
+      <a href="#pizzas"><i class="fas fa-pizza-slice"></i> Пиццы</a>
+      <a href="#hotdogs"><i class="fas fa-hotdog"></i> Хот-доги</a>
+      <a href="#how-it-works"><i class="fas fa-list-ol"></i> Как заказать</a>
+      <a href="#testimonials"><i class="fas fa-comments"></i> Отзывы</a>
+      <a href="#" id="mobile-login"><i class="fas fa-sign-in-alt"></i> Войти</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Самые горячие пиццы в городе</h1>
+        <p>Наслаждайтесь итальянской пиццей и американскими хот-догами с бесплатной доставкой</p>
+        <div class="cta-buttons">
+          <button id="btn-order-now" class="btn btn-primary">Заказать сейчас</button>
+          <button id="btn-view-menu" class="btn btn-secondary">Посмотреть меню</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories" id="pizzas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Наши горячие категории</h2>
+        <p>Выберите то, что вам по душе</p>
+      </div>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-img pizza-img"></div>
+          <div class="category-content">
+            <h3>Пиццы</h3>
+            <p>Итальянская, американская, вегетарианская и другие виды пиццы на любой вкус</p>
+            <button class="btn btn-primary" data-category="pizza">Выбрать пиццу</button>
+          </div>
+        </div>
+        <div class="category-card" id="hotdogs">
+          <div class="category-img hotdog-img"></div>
+          <div class="category-content">
+            <h3>Хот-доги</h3>
+            <p>Классические, чили-доги, с беконом и другие варианты горячих хот-догов</p>
+            <button class="btn btn-primary" data-category="hotdog">Выбрать хот-дог</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <div class="section-title">
+        <h2>Популярные блюда</h2>
+        <p>Самые любимые нашими клиентами</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-badge">Хит продаж</div>
+          <div class="product-img product-1"></div>
+          <div class="product-content">
+            <h3>Маргарита</h3>
+            <p>Классическая итальянская пицца с томатным соусом, моцареллой и базиликом</p>
+            <div class="product-footer">
+              <div class="price">450 ₽</div>
+              <div class="add-to-cart" data-id="1" data-name="Маргарита" data-price="450">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">Новинка</div>
+          <div class="product-img product-2"></div>
+          <div class="product-content">
+            <h3>Пепперони</h3>
+            <p>Острая пицца с колбаской пепперони и двойной порцией сыра моцарелла</p>
+            <div class="product-footer">
+              <div class="price">520 ₽</div>
+              <div class="add-to-cart" data-id="2" data-name="Пепперони" data-price="520">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">Хит продаж</div>
+          <div class="product-img product-3"></div>
+          <div class="product-content">
+            <h3>Классический хот-дог</h3>
+            <p>Традиционный хот-дог с сосиской, горчицей, кетчупом и луком</p>
+            <div class="product-footer">
+              <div class="price">250 ₽</div>
+              <div class="add-to-cart" data-id="3" data-name="Классический хот-дог" data-price="250">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">Рекомендуем</div>
+          <div class="product-img product-4"></div>
+          <div class="product-content">
+            <h3>Хот-дог с беконом</h3>
+            <p>Хрустящий бекон, сыр чеддер и специальный соус на свежей булочке</p>
+            <div class="product-footer">
+              <div class="price">320 ₽</div>
+              <div class="add-to-cart" data-id="4" data-name="Хот-дог с беконом" data-price="320">
+                <i class="fas fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-title">
+        <h2>Как заказать</h2>
+        <p>Всего 3 простых шага до вашего заказа</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Выберите блюда</h3>
+          <p>Просмотрите наше меню и добавьте понравившиеся блюда в корзину</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fas fa-credit-card"></i></div>
+          <h3>Оплатите заказ</h3>
+          <p>Завершите оформление заказа с помощью удобного способа оплаты</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fas fa-truck"></i></div>
+          <h3>Получите доставку</h3>
+          <p>Наслаждайтесь вкусной едой у себя дома через 30-45 минут</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Отзывы клиентов</h2>
+        <p>Что говорят наши покупатели</p>
+      </div>
+      <div class="reviews">
+        <div class="review-card">
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Пицца просто восхитительная! Тесто тонкое и хрустящее, начинка свежая и вкусная. Доставили быстро и ещё горячей. Обязательно закажу снова!"</p>
+          <div class="review-author">
+            <div class="author-avatar author-1"></div>
+            <div class="author-info">
+              <h4>Анна Петрова</h4>
+              <p>Постоянный клиент</p>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Хот-доги просто бомба! Особенно с беконом. Порции большие, ингредиенты свежие. Теперь заказываю регулярно по пятницам для всей семьи."</p>
+          <div class="review-author">
+            <div class="author-avatar author-2"></div>
+            <div class="author-info">
+              <h4>Дмитрий Соколов</h4>
+              <p>Клиент 2 года</p>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">"Заказала пиццу и хот-доги на вечеринку. Все пришло вовремя, упаковка отличная, еда была еще теплая. Гости остались довольны! Спасибо!"</p>
+          <div class="review-author">
+            <div class="author-avatar author-3"></div>
+            <div class="author-info">
+              <h4>Екатерина Иванова</h4>
+              <p>Новый клиент</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Готовы попробовать наши горячие предложения?</h2>
+      <p>Зарегистрируйтесь сейчас и получите скидку 15% на первый заказ</p>
+      <button id="btn-cta-signup" class="btn btn-primary">Зарегистрироваться</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>P-HUB</h3>
+          <p>Доставка самых вкусных пицц и хот-догов в вашем городе. Качество, скорость и вкус гарантированы!</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Меню</h3>
+          <ul class="footer-links">
+            <li><a href="#pizzas">Пиццы</a></li>
+            <li><a href="#hotdogs">Хот-доги</a></li>
+            <li><a href="#">Напитки</a></li>
+            <li><a href="#">Салаты</a></li>
+            <li><a href="#">Десерты</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Информация</h3>
+          <ul class="footer-links">
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Доставка и оплата</a></li>
+            <li><a href="#">Возврат</a></li>
+            <li><a href="#">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Контакты</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Пушкина, 15</li>
+            <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+            <li><i class="fas fa-envelope"></i> info@p-hub.ru</li>
+            <li><i class="fas fa-clock"></i> Пн-Вс: 10:00 - 23:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 P-HUB. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Вход в аккаунт</h2>
+      <div class="error-message" id="login-error"></div>
+      <div class="form-group">
+        <label for="modal-email">Email</label>
+        <input id="modal-email" type="email" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label for="modal-password">Пароль</label>
+        <input id="modal-password" type="password" placeholder="Ваш пароль">
+      </div>
+      <button id="btn-modal-login" class="btn btn-primary">Войти</button>
+      <div class="form-footer">
+        <p>Еще нет аккаунта? <a href="#" id="show-signup">Зарегистрироваться</a></p>
+        <p><a href="#" id="show-reset">Забыли пароль?</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="signup-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Создание аккаунта</h2>
+      <div class="error-message" id="signup-error"></div>
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <input id="signup-email" type="email" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Пароль</label>
+        <input id="signup-password" type="password" placeholder="Придумайте пароль">
+      </div>
+      <div class="form-group">
+        <label for="signup-confirm">Подтвердите пароль</label>
+        <input id="signup-confirm" type="password" placeholder="Повторите пароль">
+      </div>
+      <button id="btn-modal-signup" class="btn btn-primary">Зарегистрироваться</button>
+      <div class="form-footer">
+        <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="reset-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Восстановление пароля</h2>
+      <div class="error-message" id="reset-error"></div>
+      <div class="form-group">
+        <label for="reset-email">Email</label>
+        <input id="reset-email" type="email" placeholder="email@example.com">
+      </div>
+      <button id="btn-modal-reset" class="btn btn-primary">Отправить инструкции</button>
+      <div class="form-footer">
+        <p><a href="#" id="show-login-from-reset">Вернуться ко входу</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно личного кабинета -->
+  <div id="profile-modal" class="modal">
+    <div class="profile-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="container">
+        <div class="user-header">
+          <div>
+            <h2>Привет, <span id="user-email"></span>!</h2>
+            <p>Ваш личный кабинет для заказов</p>
+          </div>
+          <button id="btn-logout" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> Выйти</button>
+        </div>
+        
+        <div class="profile-section">
+          <h2><i class="fas fa-user-circle"></i> Ваш профиль</h2>
+          <div id="profile-view" class="profile-active">
+            <div class="profile-info">
+              <p><strong>Имя:</strong> <span id="profile-first-name">Не указано</span></p>
+              <p><strong>Фамилия:</strong> <span id="profile-last-name">Не указано</span></p>
+              <p><strong>Телефон:</strong> <span id="profile-phone">Не указан</span></p>
+              <p><strong>Адрес доставки:</strong> <span id="profile-address">Не указан</span></p>
+            </div>
+            <button id="btn-edit-profile" class="btn btn-primary"><i class="fas fa-edit"></i> Редактировать профиль</button>
+          </div>
+          
+          <div id="profile-edit">
+            <div class="form-group">
+              <label for="edit-first-name">Имя</label>
+              <input type="text" id="edit-first-name" placeholder="Ваше имя">
+            </div>
+            <div class="form-group">
+              <label for="edit-last-name">Фамилия</label>
+              <input type="text" id="edit-last-name" placeholder="Ваша фамилия">
+            </div>
+            <div class="form-group">
+              <label for="edit-phone">Телефон</label>
+              <input type="tel" id="edit-phone" placeholder="+7 (999) 999-99-99">
+            </div>
+            <div class="form-group">
+              <label for="edit-address">Адрес доставки</label>
+              <textarea id="edit-address" rows="3" placeholder="Улица, дом, квартира"></textarea>
+            </div>
+            <div class="flex-buttons" style="display: flex; gap: 10px; margin-top: 15px;">
+              <button id="btn-save-profile" class="btn btn-primary">Сохранить</button>
+              <button id="btn-cancel-profile" class="btn btn-secondary">Отмена</button>
+            </div>
+          </div>
+        </div>
+        
+        <h2><i class="fas fa-pizza-slice"></i> Меню пиццы</h2>
+        <div id="pizza-menu" class="menu-grid"></div>
+        
+        <h2 style="margin-top: 30px;"><i class="fas fa-hotdog"></i> Меню хот-догов</h2>
+        <div id="hotdog-menu" class="menu-grid"></div>
+        
+        <div class="cart-container">
+          <h2><i class="fas fa-shopping-cart"></i> Корзина</h2>
+          <div id="cart"></div>
+          <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total">0 ₽</span>
+          </div>
+          <button id="btn-order" class="btn btn-primary" disabled><i class="fas fa-check-circle"></i> Оформить заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
